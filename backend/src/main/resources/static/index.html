@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestGen AI - Local Test Case Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="url(#paint0_linear)"/>
+                    <path d="M16 8L24 24H8L16 8Z" fill="white"/>
+                    <defs>
+                        <linearGradient id="paint0_linear" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#4F46E5"/>
+                            <stop offset="1" stop-color="#7C3AED"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>TestGen AI</h1>
+            </div>
+            <p class="subtitle">Generate deterministic test cases instantly with local AI.</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="input-group">
+                    <label for="requirements">Describe your feature requirements</label>
+                    <textarea id="requirements" placeholder="e.g. As a user, I want a login form that validates email format and password strength..."></textarea>
+                </div>
+                
+                <div class="action-bar">
+                    <button id="generate-btn" class="primary-btn">
+                        <span class="btn-text">Generate Test Cases</span>
+                        <div class="loader hidden"></div>
+                    </button>
+                </div>
+            </section>
+
+            <section id="results-section" class="results-section hidden">
+                <div class="results-header">
+                    <h2 id="suite-title">Test Suite</h2>
+                    <button id="copy-btn" class="secondary-btn">Copy JSON</button>
+                    <button id="download-btn" class="secondary-btn">Download CSV</button>
+                </div>
+                
+                <div id="test-cases-list" class="test-cases-list">
+                    <!-- Test cases will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by Java Spring Boot & Ollama (gemma3:1b)</p>
+        </li>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
