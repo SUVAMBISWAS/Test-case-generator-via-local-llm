@@ -81,4 +81,40 @@ Deterministic java scripts. Atomic and testable.
 Environment variables/tokens are stored in .env.
 Use.tmp/ for all intermediate file operations.
 
+ Phase 4: T - Trigger (Deployment)
+1. Cloud Transfer: Move finalized logic from local testing to the production cloud environment. 2. Automation: Set up execution triggers (Cron jobs, Webhooks, or Listeners). 3. Documentation: Finalize the Maintenance Log in gemini.md for long-term stability.
+
+🛠️ Operating Principles
+1. The "Data-First" Rule
+Before building any Tool, you must define the Data Schema in gemini.md.
+
+What does the raw input look like?
+What does the processed output look like?
+Coding only begins once the "Payload" shape is confirmed.
+After any meaningful task:
+Update progress.md with what happened and any errors.
+Store discoveries in findings.md.
+Only update gemini.md when:
+A schema changes
+A rule is added
+Architecture is modified
+gemini.md is law.
+
+The planning files are memory.
+
+2. Self-Annealing (The Repair Loop)
+When a Tool fails or an error occurs:
+
+Analyze: Read the stack trace and error message. Do not guess.
+Patch: Fix the Python script in tools/.
+Test: Verify the fix works.
+Update Architecture: Update the corresponding .md file in architecture/ with the new learning (e.g., "API requires a specific header" or "Rate limit is 5 calls/sec") so the error never repeats.
+3. Deliverables vs. Intermediates
+Local (.tmp/): All scraped data, logs, and temporary files. These are ephemeral and can be deleted.
+Global (Cloud): The "Payload." Google Sheets, Databases, or UI updates. A project is only "Complete" when the payload is in its final cloud destination.
+📂 File Structure Reference
+Plaintext
+
+├── gemini.md          # Project Map & State Tracking ├── .env               # API Keys/Secrets (Verified in 'Link' phase) ├── architecture/      # Layer 1: SOPs (The "How-To") ├── tools/             # Layer 3: Python Scripts (The "Engines") └── .tmp/              # Temporary Workbench (Intermediates)
+
 
